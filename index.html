@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Test Bae — Official</title>
+  <meta name="description" content="Test Bae — lightweight Android app for inspecting website safety (phishing, SSL, content scan). Developed by Adikara Media." />
+  <style>
+    :root{
+      --accent:#E91E63; /* warna utama */
+      --accent-dark:#C2185B; /* warna gelap */
+      --muted:#6b7280;
+      --bg:#ffffff;
+      --card:#fafafa;
+      --border:#eef2f6;
+      --radius:15px;
+      --max-width:80%; /* fleksibel */
+      --container-padding:6%;
+      font-family:Inter, "Segoe UI", Roboto, -apple-system, system-ui, Arial, sans-serif;
+      color-scheme: light;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background:var(--bg);
+      color:#0f172a;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.5;
+    }
+
+    /* Header */
+    header{
+      position:sticky;
+      top:0;
+      z-index:60;
+      backdrop-filter: blur(6px);
+      background:#ffffffcc;
+      border-bottom:1px solid var(--border);
+    }
+    .header-inner{
+      max-width:1360px;
+      width:var(--max-width);
+      margin:0 auto;
+      padding:18px var(--container-padding);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+    }
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{
+      width:48px;height:48px;border-radius:10px;
+      display:flex;align-items:center;justify-content:center;
+      background:linear-gradient(135deg,#fce4ec,#f8bbd0);
+      color:var(--accent); font-weight:700; font-size:16px;
+      box-shadow: 0 6px 18px rgba(233,30,99,0.15);
+    }
+    .brand h1{font-size:18px;margin:0;color:var(--accent)}
+    .brand p{margin:0;font-size:12px;color:var(--muted)}
+
+    nav{display:flex;gap:14px;align-items:center}
+    nav a{
+      padding:8px 12px;border-radius:10px;color:#5a1030;
+      text-decoration:none;font-weight:600;font-size:14px;
+    }
+    nav a:hover{background:#fde6ee;color:var(--accent)}
+
+    /* Hero */
+    .hero{
+      max-width:1360px;
+      width:var(--max-width);
+      margin:28px auto 14px; padding:28px var(--container-padding);
+      display:flex;flex-direction:column;align-items:center;text-align:center;gap:12px;
+    }
+    .hero h2{font-size:28px;color:var(--accent);margin:0;line-height:1.05}
+    .hero p{max-width:820px;color:#10243a;font-size:15.5px;margin:0}
+    .cta{display:inline-block;margin-top:12px;background:var(--accent);color:#fff;padding:10px 18px;border-radius:999px;text-decoration:none;font-weight:700;box-shadow:0 8px 28px rgba(233,30,99,0.2)}
+    .cta:hover{background:var(--accent-dark);transition:background .2s ease}
+
+    /* Sections */
+    main{
+      max-width:1360px;
+      width:var(--max-width);
+      margin:0 auto;
+      padding:8px var(--container-padding) 56px
+    }
+    section{margin-top:28px;padding:28px;background:transparent;border-radius:var(--radius)}
+    section h3{color:var(--accent);text-align:center;font-size:20px;margin-bottom:18px}
+
+    /* Changelog / updates */
+    .updates{
+      max-width:820px;margin:0 auto;background:var(--card);border:1px solid var(--border);
+      padding:18px;border-radius:12px;box-shadow: 0 6px 20px rgba(16,24,40,0.02);
+    }
+    .update-item{display:flex;gap:16px;align-items:flex-start;padding:14px 4px;border-bottom:1px dashed rgba(7,12,20,0.04)}
+    .update-item:last-child{border-bottom:0}
+    .version-pill{
+      min-width:86px;border-radius:10px;padding:8px 10px;background:#fff;border:1px solid rgba(6,14,31,0.04);
+      text-align:center;font-weight:700;color:var(--accent);
+    }
+    .update-body h4{margin:0 0 6px 0;font-size:16px;color:#07122a}
+    .update-body ul{margin:6px 0 0 18px;padding:0;color:#16324a}
+    .update-body ul li{margin:8px 0;font-size:14px}
+    .update-meta{font-size:13px;color:var(--muted);margin-top:6px}
+
+    /* Download */
+    .download-wrap{display:flex;flex-direction:column;align-items:center;gap:10px;padding-top:8px}
+    .muted{color:var(--muted);font-size:13px}
+
+    /* About */
+    .about-grid{
+      display:flex;
+      flex-direction:column;
+      gap:22px;
+    }
+    .about-card{
+      background:var(--card);
+      border:1px solid var(--border);
+      padding:18px;
+      border-radius:12px
+    }
+    .about-card h4{margin:0 0 8px 0;color:#b3124d}
+    .about-card p{color:#153243;font-size:14px;line-height:1.6}
+
+    /* Footer */
+    footer{
+      max-width:1360px;
+      width:var(--max-width);
+      margin:34px auto 60px;
+      padding:18px var(--container-padding);
+      text-align:center;color:var(--muted);
+      border-top:1px solid var(--border)
+    }
+
+    /* Responsive */
+    @media (max-width:900px){
+      nav{display:none}
+      .hero h2{font-size:22px}
+      .logo{width:44px;height:44px}
+    }
+    @media (max-width:480px){
+      .hero p{font-size:15px}
+      .update-item{flex-direction:column;align-items:stretch}
+      .version-pill{min-width:auto;display:inline-block;margin-bottom:8px}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">TB</div>
+        <div>
+          <h1>Test Bae</h1>
+          <p>Website safety inspector — Android APK</p>
+        </div>
+      </div>
+
+      <nav aria-label="Main Navigation">
+        <a href="#new">New</a>
+        <a href="#download">Download</a>
+        <a href="#about">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- NEW -->
+    <section id="new" class="hero" aria-labelledby="new-title">
+      <h2 id="new-title">Smart web inspection, built for simplicity</h2>
+      <p>Test Bae is a lightweight Android application designed to help users quickly evaluate website safety. It inspects URLs, validates SSL/TLS certificates, detects phishing patterns, and scans page content for risky downloads and suspicious scripts.</p>
+      <a class="cta" href="https://safefileku.com/download/8zLU4fbUt1yeqSE1">Download APK (v1.2.18)</a>
+    </section>
+
+    <!-- UPDATE / CHANGELOG -->
+    <section aria-labelledby="updates-title">
+      <h3 id="updates-title">Update — v1.2.18 (Okt 05, 2025)</h3>
+
+      <div class="updates" role="list">
+        <div class="update-item" role="listitem" aria-label="v1.2.18">
+          <div class="version-pill" aria-hidden="true">v1.2.18</div>
+          <div class="update-body">
+            <h4>Initial public release of <strong>Test Bae</strong></h4>
+            <div class="update-meta">Release date: Okt 05, 2025</div>
+            <ul>
+              <li>Initial public release of Test Bae with a focus on fast, local URL inspection.</li>
+              <li>Smart URL inspection including protocol, host analysis, and redirect checks.</li>
+              <li>SSL/TLS certificate validation: issuer, subject, validity window, and SHA-256 fingerprint.</li>
+              <li>Phishing detection via heuristic analysis: host entropy, excessive digits, punycode, and suspicious TLDs.</li>
+              <li>Content scanning for password input forms, potentially malicious JavaScript indicators (e.g., eval, document.write), and risky downloads (.apk, .exe, .zip).</li>
+              <li>New suspicious TLD detection feature.</li>
+              <li>Categorized TLD list: High-Volume, High-Risk, Typosquatting, Ransomware/C2, and Suspicious.</li>
+              <li>Domain scanning logic for better accuracy.</li>
+              <li>Clear explanation for each detected TLD (why it is risky).</li>
+              <li>Warning highlight when suspicious domains are found.</li>
+              <li>More comprehensive TLD coverage.</li>
+              <li>Optimized connection management during the first app launch.</li>
+              <li>Stability improvements in domain detection module.</li>
+              <li>Minor bug fixes and performance optimizations to improve analysis speed and stability.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DOWNLOAD -->
+    <section id="download" aria-labelledby="download-title">
+      <h3 id="download-title">Download</h3>
+      <div class="download-wrap" role="region" aria-label="Download area">
+        <p style="max-width:760px;text-align:center;margin:0 auto 6px">Download the official Test Bae APK (v1.2.18). Always ensure you download from the official source below to keep your device safe.</p>
+        <a class="cta" href="#" aria-label="Download Test Bae APK">Download Official APK</a>
+        <div class="muted">Signed build verified by Adikara Media.</div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" aria-labelledby="about-title">
+      <h3 id="about-title">About</h3>
+      <div class="about-grid">
+        <div class="about-card">
+          <h4>About Test Bae</h4>
+          <p>Test Bae is an Android application developed to give users a quick, technical view of whether a website might be risky. By combining protocol checks, certificate inspection, domain heuristics, and content scanning, Test Bae aims to surface suspicious indicators in a way that's understandable for non-technical users and useful for security-minded users alike.</p>
+
+          <h4 style="margin-top:12px">Core Capabilities</h4>
+          <p>URL analysis, SSL/TLS fingerprinting, detection of password forms and suspicious JavaScript patterns, and detection of potentially dangerous download links are among the built-in capabilities. The app performs analysis locally on the device to keep user inputs private by default.</p>
+        </div>
+
+        <aside class="about-card" aria-label="About Adikara Media">
+          <h4>About Adikara Media</h4>
+          <p>Adikara Media is a technology studio focused on cybersecurity and digital safety. We specialize in building lightweight, security-first tools that help individuals and organizations identify risks on the web. Our team emphasizes research-driven heuristics and user trust — building tools that are transparent, fast, and respectful of user privacy.</p>
+
+          <h4 style="margin-top:12px">Contact</h4>
+          <p class="muted" style="margin-bottom:6px">Email: <a href="mailto:adikaramedia.studio@gmail.com">adikaramedia.studio@gmail.com</a></p>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © 2025 Test Bae — Adikara Media. All rights reserved.
+  </footer>
+</body>
+</html>
